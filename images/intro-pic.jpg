@@ -1,0 +1,118 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<title>TOTOLINK</title>
+
+<SCRIPT language=Javascript src="language_en.js"></SCRIPT>
+<meta http-equiv="Pragma" content="no-cache">
+<meta HTTP-equiv="Cache-Control" content="no-cache">
+<meta HTTP-EQUIV="Expires" CONTENT="Mon, 01 Jan 1990 00:00:01 GMT">
+
+<link rel="stylesheet" href="style.css" type="text/css">
+<script type="text/javascript" src="util_gw.js"> </script>
+<script>
+if(top!=self)top.location.href = self.location.href;
+
+function includeSpace(str)
+{
+  for (var i=0; i<str.length; i++) {
+  	if ( str.charAt(i) == ' ' ) {
+	  return true;
+	}
+  }
+  return false;
+}
+
+function saveChanges()
+{
+   if ( document.password.username.value.length == 0 ) {
+	if ( !confirm(password_user_empty) ) {
+		document.password.username.focus();
+		return false;
+  	}
+	else
+		return true;
+  }
+
+  if ( document.password.username.value.length > 0 &&
+  		document.password.userpass.value.length == 0 ) {
+	alert(password_passwd_empty);
+	document.password.userpass.focus();
+	return false;
+  }
+
+  if ( includeSpace(document.password.username.value)) {
+	alert(password_user_invalid);
+	document.password.username.focus();
+	return false;
+  }
+
+  if ( includeSpace(document.password.userpass.value)) {
+	alert(password_passwd_invalid);
+	document.password.userpass.focus();
+	return false;
+  }
+
+  return true;
+}
+
+
+function Load_Setting()
+{		
+	document.getElementById("div_main").style.height = document.body.offsetHeight-96-40-40+"px";
+	document.getElementById("div_main").style.height = document.body.clientHeight-96-40-40+"px";//for firefox		
+}
+
+function click_Forget()
+{		
+	alert(password_warning_info);
+}
+
+</script>
+</head>
+
+<body onLoad="Load_Setting()">
+<form action=/boafrm/formLogin method=POST name="password">
+<input type="hidden" value="/login.htm" name="submit-url">
+<input type="hidden" value="" name="userAgent">
+
+<table id="div_main" width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td>
+<div align="center">
+<table border=0 width="370" align="center">
+</tr>
+<tr><td class="login_title"><script>dw(lg_ul)</script></td></tr>
+<tr align="right"><td class="login_help" onClick='click_Forget();'><a class=stus href=""><script>dw(password_warning)</script></a></td></tr>
+
+</table>
+
+<table width="370" height="227" border="0" cellpadding="0" cellspacing="0">
+<tr>
+   <td colspan="3" style="background:url(icons/Login.gif) repeat; height:227; width:370">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+         <tr><td class="login1"></td></tr>
+         <tr><td class="login_label"><script>dw(lg_un)</script></td><td><input type="text" name="username" width=10 class="login_input"></td></tr>
+         <tr><td class="login_label"><script>dw(lg_pass)</script></td><td><input type="password" id="userpass" name="userpass" width=10 class="login_input"></td></tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+         <tr><td class="login3"></td></tr>
+         <tr><td class="login4">
+            <input type="image" class="input_login" src="icons/Login_button.gif"  border="0" onClick="return saveChanges()" style="cursor:pointer"></td>
+         </tr>
+      </table></td>
+</tr>
+</table>
+
+</div></td>
+</tr>
+</table>
+
+<script>
+	document.password.username.focus();
+	document.password.userAgent.value=window.navigator.userAgent;
+</script>
+</form>
+</body>
+</html>
